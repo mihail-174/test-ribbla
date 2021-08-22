@@ -29,3 +29,40 @@ html(lang="ru")
         block content
         block styles
         block scripts
+
+        script.
+            (function ($) {
+                $(document).ready(function () {
+
+                    $('.promo .btn').on('click' , function (e) {
+                        e.preventDefault();
+                        $('.modal-calculate-cost').dialog({
+                            title: 'Заказать консультацию' ,
+                            modal: true ,
+                            width: 540 ,
+                            height: 'auto' ,
+                            draggable: false ,
+                            resizable: false ,
+                            buttons: [
+                                {
+                                    text: "Отправить",
+                                    click: function() {
+                                        $( this ).dialog( "close" );
+                                    }
+                                }
+                            ],
+                            open: function( event, ui ) {
+                                if ($('.ui-dialog:visible').length) {
+                                    if ( !$('.ui-dialog-wrapper').length ) {
+                                        $('.ui-dialog').wrap('<div class="ui-dialog-wrapper"></div>');
+                                    }
+                                    $('.ui-dialog-buttonpane').find('button').removeClass('ui-button');
+                                }
+                            },
+                            close: function( event, ui ) {
+                                $('.ui-dialog-wrapper').remove();
+                            },
+                        });
+                    });
+                });
+            })(jQuery);

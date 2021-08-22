@@ -1,12 +1,31 @@
 @import "../../styles/helpers/_helpers";
 
 .info-calculate-cost {
-    background-color: #ff3b3d;
+    background-color: #fff;
     padding: 60px 55px;
     display: flex;
     flex-direction: column;
     justify-content: end;
     position: relative;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #e8dfe0;
+    &:hover {
+        background-color: #ff3b3d;
+        .info-calculate-cost__title {
+            color: #fff;
+            img {
+                &.red {
+                    display: none;
+                }
+                &.white {
+                    display: inline-flex;
+                }
+            }
+        }
+        .info-calculate-cost__text {
+            color: #fff;
+        }
+    }
     .bg-img {
         position: absolute;
         top: -73px;
@@ -26,19 +45,22 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 19px;
-    color: #ffffff;
     width: 107px;
     margin-bottom: 24px;
+    transition: all 0.2s ease-in-out;
     img {
         margin-left: 8px;
+        &.white {
+            display: none;
+        }
     }
 }
 .info-calculate-cost__text {
     font-weight: 600;
     font-size: 12px;
     line-height: 12px;
-    color: #ffffff;
     width: 213px;
+    transition: all 0.2s ease-in-out;
     P {
         @include first(1) {
             margin-top: 0;

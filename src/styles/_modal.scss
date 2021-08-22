@@ -1,0 +1,132 @@
+.ui-widget-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: none;
+    opacity: 1;
+}
+.ui-dialog-wrapper {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: fixed;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     z-index: 1263;
+     padding: rem(48px);
+     @include max-screen(1024px) {
+         padding: 0;
+     }
+ }
+.ui-dialog {
+    box-sizing: border-box;
+    position: fixed !important;
+    z-index: 1000;
+    top: auto !important;
+    left: auto !important;
+    border: none !important;
+    padding: 2rem;
+    font-size: inherit;
+    font-family: inherit;
+    border-radius: 0;
+    background: #fff !important;
+    max-height: 100%;
+    overflow: auto;
+    @include max-screen(1024px) {
+        width: 100% !important;
+        height: 100% !important;
+        overflow: auto;
+    }
+    @include max-screen(768px) {
+        padding: 1rem;
+    }
+    .ui-dialog-content {
+        overflow: initial;
+    }
+    .webform-submission-form {
+        .webform-elements {
+            gap: rem(24px);
+        }
+    }
+}
+.ui-dialog-titlebar {
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: rem(32px);
+}
+.ui-dialog-title {
+    margin: 0 !important;
+    font-size: rem(16px) !important;
+}
+.ui-dialog-titlebar-close {
+    top: -2rem !important;
+    right: -2rem !important;
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    @include max-screen(768px) {
+        top: -1rem !important;
+        right: -1rem !important;
+    }
+    span {
+        display: none;
+    }
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        height: 2px;
+        width: 1.375em;
+        margin: auto;
+        transition: all 0.25s ease-in-out;
+    }
+    &::before {
+        transform: rotate(45deg);
+    }
+    &::after {
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        box-shadow: none !important;
+        &::before,
+        &::after {
+            background-color: #000;
+        }
+    }
+}
+.ui-dialog-content {
+    padding: 0 !important;
+    .form-actions {
+        display: none;
+    }
+}
+.ui-dialog-buttonpane {
+    background: #fff;
+    border: none !important;
+    padding: 0 !important;
+    margin: rem(32px 0 0) !important;
+    button {
+        margin: 0 !important;
+        border-radius: 0;
+    }
+    .ui-dialog-buttonset {
+        float: none !important;
+    }
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: var(--font-family-main);
+}

@@ -132,9 +132,9 @@ button {
 
 // КНОПКИ В ФОРМЕ
 //.search .form-actions,
-.to-basket .form-actions,
+//.to-basket .form-actions,
 .form-submit,
-.edit-submit,
+//.edit-submit,
 .ui-dialog-buttonpane button {
     display: inline-flex;
     align-items: center;
@@ -156,6 +156,7 @@ button {
     border: none;
     text-transform: uppercase;
     letter-spacing: 0.02em;
+    width: 328px;
     &:hover {
         color: #fff;
         background-color: #ff3b3d;

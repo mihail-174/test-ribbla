@@ -231,35 +231,16 @@
         <div class="header__burger">
         </div>
       </div>
-      <!--include: cssfile[promo] scriptfile[promo]-->
+      <!--include: cssfile[promo] scriptfile[]-->
       <div class="promo">
-        <div class="promo__slider">
-          <div class="promo__slider-inner">
-            <div class="promo__slider-content">
-              <div class="promo__slide">
-                <div class="promo__image"><img src="img/promo/slide-01.png" alt="">
-                </div>
-                <div class="promo__content">
-                  <div class="promo__title1">Жизнь<br>полна<br>идей<img src="img/semicircle02.png" alt="">
-                  </div>
-                  <div class="promo__title2">как<br>и наша<br>мебель
-                  </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
-                </div>
-              </div>
-              <div class="promo__slide">
-                <div class="promo__image"><img src="img/promo/slide-01.png" alt="">
-                </div>
-                <div class="promo__content">
-                  <div class="promo__title1">Жизнь<br>полна<br>идей<img src="img/semicircle02.png" alt="">
-                  </div>
-                  <div class="promo__title2">как<br>и наша<br>мебель
-                  </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
-                </div>
-              </div>
-            </div>
+        <div class="promo__slide">
+          <div class="promo__image"><img src="img/promo/slide-01.png" alt="">
           </div>
-          <div class="promo__dots">
-            <div class="dots"></div>
+          <div class="promo__content">
+            <div class="promo__title1">Жизнь<br>полна<br>идей<img src="img/semicircle02.png" alt="">
+            </div>
+            <div class="promo__title2">как<br>и наша<br>мебель
+            </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
           </div>
         </div>
       </div>
@@ -320,7 +301,7 @@
           <div class="block__col2">
             <!--include: cssfile[info-calculate-cost] scriptfile[]-->
             <div class="info-calculate-cost"><img src="img/img-01.png" alt="" class="bg-img">
-              <div class="info-calculate-cost__title">Вы получите примерный расчет<img src="img/semicircle03.png" alt="">
+              <div class="info-calculate-cost__title">Вы получите примерный расчет<img src="img/semicircle04.png" alt="" class="red"><img src="img/semicircle03.png" alt="" class="white">
               </div>
               <div class="info-calculate-cost__text">
                 <p>Оператор перезвонит вам для более подробной консультации.</p>
@@ -470,7 +451,7 @@
           </h2>
           <div class="body">Каждый проект требует  индивидуального подхода  создайте свой в нашем  конструторе</div><a href="#" class="btn btn-primary">Конструктор</a>
         </div>
-        <div class="item item-fast item_red">
+        <div class="item item-fast">
           <div class="item-title">Быстро</div>
           <div class="item-body">Все изменения<br>в калькуляторе<br>пересчитываются<br>в режиме онлайн</div>
         </div>
@@ -613,5 +594,92 @@
         </div>
       </div>
     </div>
+    <div style="display:none;" class="dev-modal">
+      <div class="modal-calculate-cost">
+        <!--include: cssfile[webform] scriptfile[]-->
+        <form class="webform-submission-form webform-submission-calculate-cost-form">
+          <div class="webform-elements form-wrapper">
+            <div class="form-item form-item-name js-form-type-textfield">
+              <label for="form-item-name">Введите ваше имя:</label>
+              <input id="form-item-name" type="text" name="name" value="" size="60" maxlength="255" class="form-text">
+            </div>
+            <div class="form-item form-item-email js-form-type-textfield">
+              <label for="form-item-email">Введите ваш e mail:</label>
+              <input id="form-item-email" type="email" name="email" value="" size="60" maxlength="255" class="form-text">
+            </div>
+            <div class="form-item form-item-phone js-form-type-tel">
+              <label for="form-item-phone">Введите ваш номер телефона:</label>
+              <input id="form-item-phone" type="tel" name="phone" value="" size="60" maxlength="255" class="form-text">
+            </div>
+            <div id="ajax-wrapper">
+              <div class="form-item form-item-upload js-form-type-webform-document-file">
+                <!-- загрузка изображения-->
+                <div class="form-managed-file">
+                  <input id="edit-file-upload" name="files[file]" size="22" type="file" class="form-file">
+                </div>
+                <div class="description">Только один файл.<br>Ограничение 128 МБ.<br>Допустимые типы: gif jpg png.</div>
+              </div>
+              <!--.form-item.form-item-upload.js-form-type-webform-document-file-->
+              <!--    // прикрепленное изображение-->
+              <!--    .form-managed-file-->
+              <!--        span.file.file--image название_картинки.png-->
+              <!--        .form-action-->
+              <!--            button.button.form-submit(type="submit", name="upload_remove_button", value="Удалить")-->
+              <!--                i.fal.fa-times-->
+              <!--    .description-->
+              <!--        | Только один файл.-->
+              <!--        br-->
+              <!--        | Ограничение 128 МБ.-->
+              <!--        br-->
+              <!--        | Допустимые типы: gif jpg png.-->
+            </div>
+            <div class="form-item js-form-type-checkbox form-item-privacy-policy">
+              <input type="checkbox" id="edit-privacy-policy" name="test_galka" value="1" class="form-checkbox">
+              <label for="edit-privacy-policy" class="option">Я согласен с условиями обработки и исползования персональных данных</label>
+            </div>
+          </div>
+          <div class="form-actions form-wrapper">
+            <input type="submit" name="op" value="Получить расчет" class="webform-button--submit form-submit">
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      (function ($) {
+          $(document).ready(function () {
+      
+              $('.promo .btn').on('click' , function (e) {
+                  e.preventDefault();
+                  $('.modal-calculate-cost').dialog({
+                      title: 'Заказать консультацию' ,
+                      modal: true ,
+                      width: 540 ,
+                      height: 'auto' ,
+                      draggable: false ,
+                      resizable: false ,
+                      buttons: [
+                          {
+                              text: "Отправить",
+                              click: function() {
+                                  $( this ).dialog( "close" );
+                              }
+                          }
+                      ],
+                      open: function( event, ui ) {
+                          if ($('.ui-dialog:visible').length) {
+                              if ( !$('.ui-dialog-wrapper').length ) {
+                                  $('.ui-dialog').wrap('<div class="ui-dialog-wrapper"></div>');
+                              }
+                              $('.ui-dialog-buttonpane').find('button').removeClass('ui-button');
+                          }
+                      },
+                      close: function( event, ui ) {
+                          $('.ui-dialog-wrapper').remove();
+                      },
+                  });
+              });
+          });
+      })(jQuery);
+    </script>
   </body>
 </html>

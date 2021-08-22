@@ -22,6 +22,9 @@
         display: grid;
         align-content: start;
         position: relative;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0px 40px 40px transparent;
+        top: 0;
         @include max-screen(991px) {
             grid-column: 1/-1;
             display: grid;
@@ -29,11 +32,20 @@
             gap: var(--grid-gap);
             align-items: center;
         }
+        &:not(.block__item_furniture):hover {
+            background-color: #ff3b3d;
+            box-shadow: 0px 40px 40px rgba(126, 136, 173, 0.25);
+            top: -20px;
+            .title {
+                color: #fff;
+            }
+        }
         .title {
             font-weight: 600;
             font-size: 24px;
             line-height: 25px;
             margin-bottom: 15px;
+            transition: all 0.2s ease-in-out;
         }
         .body {
             font-size: 12px;
@@ -58,15 +70,9 @@
         }
     }
     .block__item_sales {
-        background-color: #ff3b3d;
         position: relative;
-        box-shadow: 0px 40px 40px rgba(126, 136, 173, 0.25);
         @include min-screen(992px) {
             grid-column: 8/span 5;
-            top: -20px;
-        }
-        .title {
-            color: #fff;
         }
         img {
             right: 35px;
