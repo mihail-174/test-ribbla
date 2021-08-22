@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Главная</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/vnd.microsoft.icon">
+    <script src="https://yastatic.net/browser-updater/v1/script.js" charset="utf-8"></script>
+    <script>var yaBrowserUpdater = new ya.browserUpdater.init({"lang":"ru","browsers":{"yabrowser":"15.12","chrome":"54","ie":"10","opera":"41","safari":"8","fx":"49","iron":"35","flock":"Infinity","palemoon":"25","camino":"Infinity","maxthon":"4.5","seamonkey":"2.3"},"theme":"yellow"});</script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.4.11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/swiper@6.4.11/swiper-bundle.min.js"></script>
+  </head>
+  <body class="front">
+    <!--+b.gulp-panel-->
+    <!--    +e.container-->
+    <!--        include burger-->
+    <!--        +e.content-->
+    <!--            +e.nv-->
+    <!--                include menu-->
+    <!---->
+    <!--// *****************************************************-->
+    <!--// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО-->
+    <!--// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ-->
+    <!--// *****************************************************-->
+    <!--style.-->
+    <!--    .gulp-panel {}-->
+    <!--    .gulp-panel.open .gulp-panel__container {-->
+    <!--        position: relative;-->
+    <!--        width: 100%;-->
+    <!--    }-->
+    <!--    .gulp-panel.open .gulp-panel__content {-->
+    <!--        width: 100%;-->
+    <!--        max-height: 100%;-->
+    <!--        overflow: visible;-->
+    <!--    }-->
+    <!--    .gulp-panel__container {-->
+    <!--        position: fixed;-->
+    <!--        top: 0;-->
+    <!--        left: 0;-->
+    <!--        z-index: 1000;-->
+    <!--        background-color: bisque;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        box-shadow: 0 0 5px 0 #ccc;-->
+    <!--        transition: all 0.25s ease-in-out;-->
+    <!--    }-->
+    <!--    .gulp-panel__content {-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        grid-gap: 30px;-->
+    <!--        overflow: hidden;-->
+    <!--        background-color: bisque;-->
+    <!--        position: fixed;-->
+    <!--        top: 0;-->
+    <!--        left: 24px;-->
+    <!--        width: 0;-->
+    <!--        z-index: 1000;-->
+    <!--    }-->
+    <!--    .gulp-panel__nv {-->
+    <!--        flex: 1;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config {-->
+    <!--        padding-left: 35px;-->
+    <!--        cursor: pointer;-->
+    <!--        height: 100%;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        position: relative;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:before {-->
+    <!--        content: "\f019";-->
+    <!--        font-family: "Font Awesome 5 Pro";-->
+    <!--        font-size: 25px;-->
+    <!--        font-weight: 100;-->
+    <!--        color: #333;-->
+    <!--        line-height: 1;-->
+    <!--        position: absolute;-->
+    <!--        top: 0;-->
+    <!--        bottom: 0;-->
+    <!--        left: 0;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        justify-content: center;-->
+    <!--        transition: all 0.2s ease-in-out;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:hover:before {-->
+    <!--        color: #d60e12;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:hover span {-->
+    <!--        color: #000000;-->
+    <!--    }-->
+    <!--    @media screen and (min-width: 992px) {-->
+    <!--        .gulp-panel.open {-->
+    <!--            height: 24px;-->
+    <!--        }-->
+    <!--    }-->
+    <!--    @media screen and (max-width: 991px) {-->
+    <!--        .gulp-panel__content {-->
+    <!--            left: 0;-->
+    <!--            padding-top: 24px;-->
+    <!--            padding-bottom: 16px;-->
+    <!--        }-->
+    <!--    }-->
+    <!---->
+    <!-- *****************************************************-->
+    <!-- СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО-->
+    <!-- ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ-->
+    <!-- *****************************************************-->
+    <script>
+      function ready(callback) {
+          // in case the document is already rendered
+          if ( document.readyState !== 'loading' ) {
+              callback();
+          }
+          // modern browsers
+          else if ( document.addEventListener ) {
+              document.addEventListener('DOMContentLoaded' , callback);
+          }
+          // IE <= 8
+          else {
+              document.attachEvent('onreadystatechange' , function () {
+                  if ( document.readyState === 'complete' ) callback();
+              });
+          }
+      };
+      ready(() => {
+      
+          // ФУНКЦИЯ ВЫВОДА СПИСКА ФАЙЛОВ CSS И JS
+          window.printListCssFiles = function printListCssFiles(style) {
+              var body = document.body.innerHTML;
+              var pattern = new RegExp("(?<=\<\!\-\-include: ).*?(?=\-\-\>)", 'gi');
+              var comment = Array.from(new Set(body.match(pattern)));
+              console.groupCollapsed("ВЫВОД СПИСКА ФАЙЛОВ CSS И JS");
+              console.log(comment);
+              console.groupEnd();
+              var new_array_name_css_file = [];
+              var new_array_name_js_file = [];
+      
+              // ВЫВОДИМ CSS И JS НА СТРАНИЦУ
+              comment.forEach(function (item) {
+      
+                  var array_name_css_file = item.match(/(?<=cssfile\[).*?(?=\])/gi);
+                  if (array_name_css_file[0]) {
+                      array_name_css_file = array_name_css_file[0].split(", ");
+                      array_name_css_file.map(function (file) {
+                          // console.log( file );
+                          new_array_name_css_file.push(`css/${file}.css`);
+                      });
+                  } else {
+                      array_name_css_file = false;
+                  };
+                  // console.log(array_name_css_file);
+      
+                  var array_name_js_file = item.match(/(?<=scriptfile\[).*?(?=\])/gi);
+                  if ( array_name_js_file[0] ) {
+                      array_name_js_file = array_name_js_file[0].split(", ");
+                      array_name_js_file.map(function (file) {
+                          new_array_name_js_file.push(`js/${file}.js`);
+                      });
+                  } else {
+                      array_name_js_file = false;
+                  };
+                  // console.log(array_name_js_file);
+              });
+      
+              console.groupCollapsed("новый список css файлов");
+              new_array_name_css_file = Array.from(new Set(new_array_name_css_file));
+              console.log(new_array_name_css_file);
+              console.groupEnd();
+      
+              console.groupCollapsed("новый список js файлов");
+              new_array_name_js_file = Array.from(new Set(new_array_name_js_file));
+              console.log(new_array_name_js_file);
+              console.groupEnd();
+      
+              new_array_name_css_file.map(function (file) {
+                  if ( file.match(/--global/gi) ) {
+                      let tagLink = document.createElement("link");
+                      tagLink.rel = "stylesheet";
+                      tagLink.type = "text/css";
+                      tagLink.href = file.replace(" --global", "");
+                      document.body.prepend(tagLink);
+                  } else {
+                      let tagLink = document.createElement("link");
+                      tagLink.rel = "stylesheet";
+                      tagLink.type = "text/css";
+                      tagLink.href = file;
+                      document.body.appendChild(tagLink);
+                  }
+              });
+      
+              new_array_name_js_file.map(function (file) {
+                  if ( file.match(/--global/gi) ) {
+                      let tagScript = document.createElement("script");
+                      tagScript.src = file.replace(" --global", "");
+                      tagScript.async = false;
+                      document.body.prepend(tagScript);
+                  } else {
+                      let tagScript = document.createElement("script");
+                      tagScript.src = file;
+                      tagScript.async = false;
+                      document.body.appendChild(tagScript);
+                  }
+              });
+      
+          }
+      
+          printListCssFiles(1);
+      
+      });
+    </script>
+    <!--include: cssfile[style] scriptfile[]-->
+    <!--include: cssfile[] scriptfile[plugins]-->
+    <!--include: cssfile[] scriptfile[drupal-file-upload-lib --global, drupal-file-upload]-->
+    <!--include: cssfile[] scriptfile[theme]-->
+    <div class="container">
+      <!--include: cssfile[header] scriptfile[]-->
+      <div class="header">
+        <div class="header__logo">Дизайн.<br>Отделка.<br>Мебель
+        </div>
+        <div class="header__location">г.&nbsp;Челябтинск, ул.&nbsp;Сони Кривой, д.&nbsp;83
+        </div>
+        <div class="header__phones">Позвонить нам:<a href="tel:+73512356594">+7 (351) 235-65-94</a>
+        </div>
+        <div class="header__burger">
+        </div>
+      </div>
+      <!--include: cssfile[promo] scriptfile[promo]-->
+      <div class="promo">
+        <div class="promo__slider">
+          <div class="promo__slider-inner">
+            <div class="promo__slider-content">
+              <div class="promo__slide">
+                <div class="promo__image"><img src="img/promo/slide-01.png" alt="">
+                </div>
+                <div class="promo__content">
+                  <div class="promo__title1">Жизнь<br>полна<br>идей<img src="img/semicircle02.png" alt="">
+                  </div>
+                  <div class="promo__title2">как<br>и наша<br>мебель
+                  </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
+                </div>
+              </div>
+              <div class="promo__slide">
+                <div class="promo__image"><img src="img/promo/slide-01.png" alt="">
+                </div>
+                <div class="promo__content">
+                  <div class="promo__title1">Жизнь<br>полна<br>идей<img src="img/semicircle02.png" alt="">
+                  </div>
+                  <div class="promo__title2">как<br>и наша<br>мебель
+                  </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="promo__dots">
+            <div class="dots"></div>
+          </div>
+        </div>
+      </div>
+      <!--include: cssfile[block] scriptfile[]-->
+      <!--include: cssfile[block-calculate-cost] scriptfile[]-->
+      <div class="block block-calculate-cost">
+        <div class="block__content">
+          <div class="block__col1">
+            <h2 class="block__title">Расчитаем<br>стоимость<br>за 30 минут<img src="img/semicircle02.png" alt="">
+            </h2>
+            <!--include: cssfile[webform] scriptfile[]-->
+            <form class="webform-submission-form webform-submission-calculate-cost-form">
+              <div class="webform-elements form-wrapper">
+                <div class="form-item form-item-name js-form-type-textfield">
+                  <label for="form-item-name">Введите ваше имя:</label>
+                  <input id="form-item-name" type="text" name="name" value="" size="60" maxlength="255" class="form-text">
+                </div>
+                <div class="form-item form-item-email js-form-type-textfield">
+                  <label for="form-item-email">Введите ваш e mail:</label>
+                  <input id="form-item-email" type="email" name="email" value="" size="60" maxlength="255" class="form-text">
+                </div>
+                <div class="form-item form-item-phone js-form-type-tel">
+                  <label for="form-item-phone">Введите ваш номер телефона:</label>
+                  <input id="form-item-phone" type="tel" name="phone" value="" size="60" maxlength="255" class="form-text">
+                </div>
+                <div id="ajax-wrapper">
+                  <div class="form-item form-item-upload js-form-type-webform-document-file">
+                    <!-- загрузка изображения-->
+                    <div class="form-managed-file">
+                      <input id="edit-file-upload" name="files[file]" size="22" type="file" class="form-file">
+                    </div>
+                    <div class="description">Только один файл.<br>Ограничение 128 МБ.<br>Допустимые типы: gif jpg png.</div>
+                  </div>
+                  <!--.form-item.form-item-upload.js-form-type-webform-document-file-->
+                  <!--    // прикрепленное изображение-->
+                  <!--    .form-managed-file-->
+                  <!--        span.file.file--image название_картинки.png-->
+                  <!--        .form-action-->
+                  <!--            button.button.form-submit(type="submit", name="upload_remove_button", value="Удалить")-->
+                  <!--                i.fal.fa-times-->
+                  <!--    .description-->
+                  <!--        | Только один файл.-->
+                  <!--        br-->
+                  <!--        | Ограничение 128 МБ.-->
+                  <!--        br-->
+                  <!--        | Допустимые типы: gif jpg png.-->
+                </div>
+                <div class="form-item js-form-type-checkbox form-item-privacy-policy">
+                  <input type="checkbox" id="edit-privacy-policy" name="test_galka" value="1" class="form-checkbox">
+                  <label for="edit-privacy-policy" class="option">Я согласен с условиями обработки и исползования персональных данных</label>
+                </div>
+              </div>
+              <div class="form-actions form-wrapper">
+                <input type="submit" name="op" value="Получить расчет" class="webform-button--submit form-submit">
+              </div>
+            </form>
+          </div>
+          <div class="block__col2">
+            <!--include: cssfile[info-calculate-cost] scriptfile[]-->
+            <div class="info-calculate-cost"><img src="img/img-01.png" alt="" class="bg-img">
+              <div class="info-calculate-cost__title">Вы получите примерный расчет<img src="img/semicircle03.png" alt="">
+              </div>
+              <div class="info-calculate-cost__text">
+                <p>Оператор перезвонит вам для более подробной консультации.</p>
+                <p>Мы не рассылаем спам, только персональные предложения</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--include: cssfile[block-our-projects] scriptfile[block-our-projects]-->
+      <div class="block block-our-projects">
+        <div class="block__content">
+          <h2 class="block__title">Посмотрите<br>на наши<br>проекты<img src="img/semicircle02.png" alt="">
+          </h2>
+          <div class="arrows">
+            <div class="arrows__arrow arrows__prev">
+            </div>
+            <div class="arrows__arrow arrows__next">
+            </div>
+          </div>
+          <div class="block__slider">
+            <div class="block__slider-inner">
+              <div class="block__slider-content">
+                <!--include: cssfile[teaser-projects] scriptfile[]-->
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/01.jpg" alt=""></div>
+                  <div class="field-title">Кабинеты и библиотеки</div>
+                  <div class="field-body">Для жилых и общественных помещений</div>
+                </div>
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/02.jpg" alt=""></div>
+                  <div class="field-title">Мебель для кухни</div>
+                  <div class="field-body">Современные комплектующие</div>
+                </div>
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/03.jpg" alt=""></div>
+                  <div class="field-title">Детские и подростковые комнаты</div>
+                  <div class="field-body">Из экологически чистых материалов</div>
+                </div>
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/01.jpg" alt=""></div>
+                  <div class="field-title">Кабинеты и библиотеки</div>
+                  <div class="field-body">Для жилых и общественных помещений</div>
+                </div>
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/02.jpg" alt=""></div>
+                  <div class="field-title">Мебель для кухни</div>
+                  <div class="field-body">Современные комплектующие</div>
+                </div>
+                <div class="teaser-projects">
+                  <div class="field-image"><img src="img/our-projects/03.jpg" alt=""></div>
+                  <div class="field-title">Детские и подростковые комнаты</div>
+                  <div class="field-body">Из экологически чистых материалов</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--include: cssfile[block-why-choose-us] scriptfile[]-->
+      <div class="block block-why-choose-us">
+        <h2 class="block__title">Почему<br>выбирают<br>нас<img src="img/semicircle02.png" alt="">
+        </h2><img src="img/block-why-choose-us/01.jpg" alt="" class="img-1"><img src="img/block-why-choose-us/02.jpg" alt="" class="img-2"><img src="img/block-why-choose-us/03.jpg" alt="" class="img-3"><img src="img/block-why-choose-us/04.jpg" alt="" class="img-4">
+        <div class="block__text group-1">
+          <div class="block__text-name">С вами<br>будет<br>работать<br>Команда профессионалов
+          </div>
+          <div class="block__text-body">Все, кто работают над<br>изготовлением Вашей мебели —<br>дизайнер- консультант, мастер,<br>технолог - профессионалы в своем<br>деле
+          </div>
+        </div>
+        <div class="block__text-percent group-2">
+          <div class="block__text-percent-value">-%
+          </div>
+          <div class="block__text-percent-name">не экономим<br>на деталях
+          </div><img src="img/semicircle02.png" alt="">
+        </div>
+        <div class="block__text group-3">
+          <div class="block__text-name">У нас<br>есть<br>собственное<br>производство
+          </div>
+          <div class="block__text-body">Наше производство<br>с современным оборудованием<br>находится в городе Челябинске.
+          </div>
+        </div>
+        <div class="block__text group-4">
+          <div class="block__text-name">Raumplus<br>единственный<br>бренд салон<br>Челябинска
+          </div>
+          <div class="block__text-body">Это гарантия качества,<br>а главное — подлинности<br>Вашего изделия
+          </div>
+        </div>
+        <div class="block__text-years group-5">
+          <div class="block__text-years-value">14
+          </div>
+          <div class="block__text-years-name">лет опыта
+          </div><img src="img/semicircle02.png" alt="">
+        </div>
+      </div>
+      <!--include: cssfile[block-quality] scriptfile[]-->
+      <div class="block block-quality">
+        <h2 class="block__title">Качество<br>проверенное<br>временем<img src="img/semicircle02.png" alt="">
+        </h2>
+        <div class="block__item block__item_order">
+          <div>
+            <div class="title">Как заказать</div>
+            <div class="body">Заказать нашу мебель очень просто, читайте подробно в этом разделе</div>
+          </div><img src="img/block-quality/01.png" alt="">
+        </div>
+        <div class="block__item block__item_sales">
+          <div>
+            <div class="title">Акции и скидки</div>
+            <div class="body">Мы любим радовать своих клиентов выгодными предложениями</div>
+          </div><img src="img/block-quality/02.png" alt="">
+        </div>
+        <div class="block__item block__item_review">
+          <div>
+            <div class="title">Отзывы</div>
+            <div class="body">Заказать нашу мебель очень просто, читайте подробно в этом разделе</div>
+          </div><img src="img/block-quality/03.png" alt="">
+        </div>
+        <div class="block__item block__item_articles">
+          <div>
+            <div class="title">Cтатьи</div>
+            <div class="body">Интересная информация о новостях в мире мебели и нашей компании</div>
+          </div><img src="img/block-quality/04.png" alt="">
+        </div>
+        <div class="block__item block__item_furniture">
+          <div>
+            <div class="title">Мебель призвана украшать интерьер</div>
+            <div class="body">
+              <p>Делать дом функциональным, а проживание в нем - комфортным.</p>
+              <p>Она должна радовать Вас долгие годы,а не несколько недель или месяцев. Поэтому выбирайте лучшее для себя и для своего дома!</p>
+            </div>
+          </div><a href="#" class="btn btn-primary">Заказать консультацию</a>
+        </div>
+      </div>
+      <!--include: cssfile[block-come-visit] scriptfile[]-->
+      <div class="block block-come-visit">
+        <div class="image"><img src="img/block-come-visit.png" alt=""></div>
+        <div class="block__content">
+          <h2 class="block__title">Приходите<br>в гости<br>онлайн<img src="img/semicircle02.png" alt="">
+          </h2>
+          <h2 class="block__title2">лучше<br>один раз<br>увидеть
+          </h2><a href="#" class="btn btn-primary"><span>3D ТУР</span></a>
+        </div>
+      </div>
+      <!--include: cssfile[block-count-your-idea] scriptfile[]-->
+      <div class="block block-count-your-idea">
+        <div class="info">
+          <h2 class="block__title">Посчитай<br>свою<br>идею<img src="img/semicircle02.png" alt="">
+          </h2>
+          <div class="body">Каждый проект требует  индивидуального подхода  создайте свой в нашем  конструторе</div><a href="#" class="btn btn-primary">Конструктор</a>
+        </div>
+        <div class="item item-fast item_red">
+          <div class="item-title">Быстро</div>
+          <div class="item-body">Все изменения<br>в калькуляторе<br>пересчитываются<br>в режиме онлайн</div>
+        </div>
+        <div class="item item-contents">
+          <div class="item-title">Наполнение</div>
+          <div class="item-body">Масса вариантов<br>для вашей фантазии,<br>в нашем конструкторе<br>мебели</div>
+        </div>
+        <div class="item item-simply">
+          <div class="item-title">Просто</div>
+          <div class="item-body">Вам нужно только ввести<br>данные своего проекта,<br>конструктор сам все посчитает</div>
+        </div>
+        <div class="item item-ticket"><img src="img/ticket.png" alt="">
+          <div class="item-title">Расчет<br>вашей<br>комнаты<img src="img/semicircle03.png" alt=""></div>
+          <div class="item-price">28 000 р.</div>
+        </div>
+      </div>
+      <!--include: cssfile[block-order-free-payment] scriptfile[]-->
+      <div class="block block-order-free-payment">
+        <div class="info">
+          <h2 class="block__title">Закажи<br>бесплатный<br>расчет<img src="img/semicircle02.png" alt="">
+          </h2>
+          <h2 class="block__title2">и получи<br>скидку
+          </h2><img src="img/5.png" alt="" class="percent">
+        </div>
+        <!--include: cssfile[webform] scriptfile[]-->
+        <form class="webform-submission-form webform-submission-calculate-cost-2-form">
+          <div class="webform-elements form-wrapper">
+            <div class="form-item form-item-markup js-form-type-webform-markup">
+              <p>Заполните форму и наши менеджеры сделают вам расчет и перезвонят</p>
+            </div>
+            <div class="form-item form-item-name js-form-type-textfield">
+              <label for="form-item-name">Введите ваше имя:</label>
+              <input id="form-item-name" type="text" name="name" value="" size="60" maxlength="255" class="form-text">
+            </div>
+            <div class="form-item form-item-email js-form-type-textfield">
+              <label for="form-item-email" class="error">Введите ваш e mail:</label>
+              <input id="form-item-email" type="email" name="email" value="" size="60" maxlength="255" class="error form-text">
+            </div>
+            <div class="form-item form-item-phone js-form-type-tel">
+              <label for="form-item-phone">Введите ваш номер телефона:</label>
+              <input id="form-item-phone" type="tel" name="phone" value="" size="60" maxlength="255" class="form-text">
+            </div>
+            <div id="ajax-wrapper">
+              <div class="form-item form-item-upload js-form-type-webform-document-file">
+                <!-- загрузка изображения-->
+                <div class="form-managed-file">
+                  <input id="edit-file-upload" name="files[file]" size="22" type="file" class="form-file">
+                </div>
+                <div class="description">Только один файл.<br>Ограничение 128 МБ.<br>Допустимые типы: gif jpg png.</div>
+              </div>
+              <!--.form-item.form-item-upload.js-form-type-webform-document-file-->
+              <!--    // прикрепленное изображение-->
+              <!--    .form-managed-file-->
+              <!--        span.file.file--image название_картинки.png-->
+              <!--        .form-action-->
+              <!--            button.button.form-submit(type="submit", name="upload_remove_button", value="Удалить")-->
+              <!--                i.fal.fa-times-->
+              <!--    .description-->
+              <!--        | Только один файл.-->
+              <!--        br-->
+              <!--        | Ограничение 128 МБ.-->
+              <!--        br-->
+              <!--        | Допустимые типы: gif jpg png.-->
+            </div>
+            <div class="form-item js-form-type-checkbox form-item-privacy-policy">
+              <input type="checkbox" id="edit-privacy-policy" name="test_galka" value="1" class="form-checkbox">
+              <label for="edit-privacy-policy" class="option">Я согласен с условиями обработки и исползования персональных данных</label>
+            </div>
+          </div>
+          <div class="form-actions form-wrapper">
+            <input type="submit" name="op" value="Получить расчет" class="webform-button--submit form-submit">
+          </div>
+        </form>
+      </div>
+      <!--include: cssfile[footer] scriptfile[]-->
+      <div class="footer">
+        <div class="footer__top">
+          <div class="footer__menu">
+            <div class="footer__title">О компании
+            </div>
+            <ul class="menu">
+              <li><a href="#">О нас</a></li>
+              <li><a href="#">Raumplus</a></li>
+              <li><a href="#">Политика в области качества</a></li>
+              <li><a href="#">Отзывы</a></li>
+            </ul>
+          </div>
+          <div class="footer__menu">
+            <div class="footer__title">Дизайн, ремонт, отделка
+            </div>
+            <ul class="menu">
+              <li><a href="#">Дизайн интерьера</a></li>
+              <li><a href="#">Трёхмерная визуализация</a></li>
+              <li><a href="#">Авторский надзор</a></li>
+              <li><a href="#">Ремонт под ключ</a></li>
+            </ul>
+          </div>
+          <div class="footer__menu">
+            <div class="footer__title">Клиентам
+            </div>
+            <ul class="menu">
+              <li><a href="#">Акции и скидки</a></li>
+              <li><a href="#">Как заказать</a></li>
+              <li><a href="#">Способы оплаты</a></li>
+              <li><a href="#">Доставка и монтаж</a></li>
+              <li><a href="#">Видео</a></li>
+              <li><a href="#">Политика обработки персональных данных</a></li>
+            </ul>
+          </div>
+          <div class="footer__menu">
+            <div class="footer__title">Портфолио
+            </div>
+            <ul class="menu">
+              <li><a href="#">Шкафы - купе</a></li>
+              <li><a href="#">Гардеробные комнаты</a></li>
+              <li><a href="#">Межеомнатные двери и перегородки</a></li>
+              <li><a href="#">Кабинеты и библиотеки</a></li>
+              <li><a href="#">Мебель для кухни</a></li>
+              <li><a href="#">Детские и подростковые комнаты</a></li>
+            </ul>
+          </div>
+          <div class="footer__contacts">
+            <div class="footer__title">Дизайнерам и архитекторам
+            </div>
+            <div class="footer__title">Контакты
+            </div>
+            <p>г. Челябинск,<br>ул. Сони Кривой, д. 83</p>
+            <p><a href="mailto:+73512356594">+7 (351) 235-65-94</a></p>
+            <p><a href="mailto:alfakomfort@mail.ru">alfakomfort@mail.ru</a></p>
+            <p><a href="#">Вконтакте</a></p>
+          </div>
+          <div class="footer__logo"><img src="img/logo-02.png" alt="">
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copyright">© 2019 Бренд-салон raumplus, производственная компания D.O.M.
+          </div>
+          <div class="footer__developer"><a href="#">ribbla</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

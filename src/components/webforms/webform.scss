@@ -1,0 +1,183 @@
+@import "../../styles/helpers/_helpers";
+
+.webform-submission-form {
+    display: grid;
+    gap: 20px 30px;
+    .webform-elements {
+        display: grid;
+        gap: 20px 30px;
+        @include min-screen(769px) {
+            align-items: flex-start;
+        }
+    }
+    .messages-wrapper {
+        margin: 0;
+    }
+    .form-item {
+        margin: 0;
+    }
+    .form-item-privacy-policy {
+        padding: 0;
+        label {
+            color: #c4c4c4;
+            font-size: rem(12px);
+            line-height: rem(12px);
+        }
+        p {
+            margin: 0;
+        }
+    }
+    .form-item-upload {
+        .description {
+            display: none;
+        }
+    }
+    .form-item-markup {
+        p {
+            margin: 0;
+        }
+    }
+    .js-form-type-webform-document-file,
+    .js-form-type-webform-markup {
+        padding: 0;
+    }
+    //.js-form-type-tel,
+    .js-form-type-select {
+        label {
+            font-size: 0.75rem;
+            top: -0.5rem;
+        }
+    }
+    .form-actions {
+        text-align: center;
+    }
+}
+.webform-confirmation__back {
+    display: none;
+}
+.webform-confirmation__message {
+    margin: 0;
+}
+.webform-submission-calculate-cost-form {
+    grid-template: "name email" "phone upload" "private submit";
+    grid-template-columns: 1fr 1fr;
+    @include max-screen(767px) {
+        grid-template: "name" "email" "phone" "upload" "private" "submit";
+    }
+    .webform-elements {
+        display: contents;
+    }
+    .form-item-name {
+        grid-area: name;
+    }
+    .form-item-email {
+        grid-area: email;
+    }
+    .form-item-phone {
+        grid-area: phone;
+    }
+    .form-item-upload {
+        grid-area: upload;
+        margin-top: 35px;
+    }
+    .form-item-privacy-policy {
+        grid-area: private;
+        margin-top: 28px;
+    }
+    .form-actions {
+        grid-area: submit;
+        margin-top: 26px;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+        margin-right: 7px;
+        &:after {
+            content: '';
+            border: 1px solid #312F2F;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            top: -6px;
+            right: -6px;
+            transition: all 0.2s ease-in-out;
+        }
+        &:hover {
+            &:after {
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+    .form-submit {
+        width: 100%;
+    }
+}
+.webform-submission-calculate-cost-2-form {
+    grid-template: "markup markup" "name email" "phone upload" "private submit";
+    grid-template-columns: 1fr 1fr;
+    @include max-screen(767px) {
+        grid-template: "markup" "name" "email" "phone" "upload" "private" "submit";
+        grid-template-columns: 1fr;
+    }
+    .webform-elements {
+        display: contents;
+    }
+    .form-item-markup {
+        grid-area: markup;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 19px;
+        width: 335px;
+        margin-bottom: 19px;
+        @include max-screen(767px) {
+            width: 100%;
+        }
+    }
+    .form-item-name {
+        grid-area: name;
+    }
+    .form-item-email {
+        grid-area: email;
+    }
+    .form-item-phone {
+        grid-area: phone;
+    }
+    .form-item-upload {
+        grid-area: upload;
+        margin-top: 35px;
+    }
+    .form-item-privacy-policy {
+        grid-area: private;
+        margin-top: 28px;
+        label {
+            color: #0e0a19;
+        }
+    }
+    .form-actions {
+        grid-area: submit;
+        margin-top: 26px;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+        margin-right: 7px;
+        &:after {
+            content: '';
+            border: 1px solid #312F2F;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            top: -6px;
+            right: -6px;
+            transition: all 0.2s ease-in-out;
+        }
+        &:hover {
+            &:after {
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+    .form-submit {
+        width: 100%;
+    }
+}

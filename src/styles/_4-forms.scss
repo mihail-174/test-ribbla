@@ -1,0 +1,97 @@
+input[type="tel"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 28px;
+    font-family: var(--font-family-main);
+    font-size: var(--font-size);
+    line-height: 15px;
+    color: var(--color-text);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e8dfe0;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    @include placeholder() {
+        opacity: 1;
+        color: var(--color-text);
+    }
+    &:focus {
+        outline: 0;
+        border-color: var(--color-border);
+    }
+    &:disabled,
+    &[readonly] {
+        background-color: #e9ecef;
+        // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+        opacity: 1;
+    }
+}
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+    &.form-control {
+        appearance: none; // Fix appearance for date inputs in Safari
+    }
+}
+textarea {
+    resize: none;
+}
+
+form {
+    [style=""],
+    [id^="ajax-wrapper"] {
+        display: contents;
+    }
+    .ajax-new-content {
+        display: none !important;
+    }
+    div.form-managed-file.error {
+        position: relative;
+        transform: translateY(0);
+        font-size: inherit;
+        color: red;
+    }
+    div.form-item--error-message,
+    div.error {
+        color: #d93026;
+        font-size: rem(11px);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translateY(100%);
+        display: block;
+    }
+    input.error,
+    textarea.error {
+        border-color: #ff3b3d !important;
+        color: #ff3b3d;
+    }
+    label.error {
+        color: #ff3b3d;
+    }
+    label {
+        display: block;
+        font-size: var(--font-size);
+        font-weight: 300;
+        color: var(--color-text);
+        margin-bottom: 21px;
+    }
+    .form-item {
+        margin: rem(16px) 0;
+    }
+    .description {
+        color: var(--color-border);
+        font-size: rem(12px);
+        margin-top: rem(4px);
+    }
+    .form-submit {}
+}

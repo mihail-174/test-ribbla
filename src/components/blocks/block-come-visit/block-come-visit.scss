@@ -1,0 +1,58 @@
+@import "../../../styles/helpers/helpers";
+
+.block-come-visit {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-column), 1fr);
+    gap: 0 var(--grid-gap);
+    padding-bottom: 41px;
+    .block__content {
+        grid-column: 8/span 5;
+        padding: 49px 0;
+        @include max-screen(767px) {
+            grid-column: 1/-1;
+        }
+    }
+    .block__title {
+        margin-bottom: 49px;
+    }
+    .block__title2 {
+        color: #ff3b3d;
+        margin-bottom: 50px;
+    }
+    .btn {
+        width: 263px;
+        span {
+            position: relative;
+            padding-left: 32px;
+            &:before {
+                content: "";
+                @include sprite($view);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto 0;
+            }
+        }
+    }
+    .image {
+        grid-column: 1/span 6;
+        position: relative;
+        display: flex;
+        justify-content: end;
+        padding-right: 14px;
+        @include max-screen(767px) {
+            display: none;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 43px;
+            left: -2000px;
+            right: 0;
+            bottom: 50px;
+            background-color: #e8dfe0;
+            z-index: -1;
+        }
+    }
+}

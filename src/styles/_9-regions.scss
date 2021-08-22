@@ -1,0 +1,12 @@
+.region {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--block-spacing);
+    &:last-child {
+        .block-section {
+            &:last-child {
+                margin-bottom: calc(0px - var(--block-spacing) );
+            }
+        }
+    }
+}

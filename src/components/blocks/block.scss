@@ -1,0 +1,98 @@
+@import "../../styles/helpers/_helpers";
+
+.block {
+    //display: flex;
+    //flex-direction: column;
+    //gap: var(--grid-gap);
+}
+//.block__header {
+//    display: grid;
+//    gap: var(--grid-gap);
+//}
+.block__title {
+    position: relative;
+    //.after {
+    //    display: block;
+    //    @include sprite($semicircle02);
+    //    position: absolute;
+    //    bottom: 8px;
+    //    left: 127px;
+    //}
+    img {
+        margin-left: 8px;
+    }
+}
+.block__content {
+    position: relative;
+    //grid-column: 1/-1;
+    table,
+    p,
+    ul,
+    ol,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @include first(1) {
+            margin-top: 0;
+        }
+    }
+}
+.block__footer {
+    position: relative;
+    display: grid;
+    gap: var(--grid-gap);
+    justify-items: center;
+}
+
+// дополнительный класс для блока с обозначенными границами в пределах контента сайта.
+// например: фон, фон картинка, бордер, тень.
+.block-border {
+    background-color: yellowgreen;
+    padding: 3rem;
+}
+
+// дополнительный класс для блока типа секция.
+// например: когда блок выходит за рамки контента.
+// эффект отрицательного маржина.
+.block-section {
+    background-color: var(--color-2-bg);
+    margin: 0 calc((var(--container) - 100vw)/2);
+    padding: var(--block-spacing) calc((100vw - var(--container))/2);
+    @include max-screen(768px) {
+        margin: 0 -16px;
+        padding: var(--block-spacing) 16px;
+    }
+    .block {
+        @include first(1) {
+            margin-top: 0;
+        }
+    }
+    input[type="tel"],
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    textarea {
+        border-color: var(--color-2-border);
+    }
+}
+
+// когда блок состоит их двух колонок
+.block-flex-col-2 {
+    @include max-screen(1199px) {
+        display: contents;
+    }
+    > .block__content {
+        @include min-screen(1200px) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
+            grid-gap: rem(32px);
+        }
+        @include max-screen(1199px) {
+            display: contents;
+        }
+    }
+}

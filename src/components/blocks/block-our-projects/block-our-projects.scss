@@ -1,0 +1,50 @@
+@import "../../../styles/helpers/helpers";
+
+.block-our-projects {
+    padding-top: 46px;
+    .block__title {
+        margin-bottom: 45px;
+    }
+    .arrows {
+        justify-content: end;
+        margin-top: -68px;
+        z-index: 1;
+        position: relative;
+    }
+    .block__slider {
+        position: relative;
+        overflow: hidden;
+        padding: 40px;
+        margin: -40px;
+        &::before,
+        &::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: #fff;
+            width: 10px;
+            content: "";
+            z-index: 1;
+        }
+        &::before {
+            left: 0;
+        }
+        &::after {
+            right: 0;
+        }
+    }
+    .block__slider-inner {
+        &:not(.swiper-container-initialized) {
+            .block__slider-content {
+                display: grid;
+                grid-template-columns: repeat(var(--grid-column), 1fr);
+                gap: var(--grid-gap);
+            }
+        }
+        &.swiper-container-initialized {
+            .block__slider-content {
+                display: flex;
+            }
+        }
+    }
+}

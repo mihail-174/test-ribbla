@@ -1,0 +1,17 @@
+//include: cssfile[block] scriptfile[]
+//include: cssfile[block-calculate-cost] scriptfile[]
+
++b.block.block-calculate-cost
+    +e.content
+        +e.col1
+            +e.H2.title
+                | Расчитаем
+                br
+                | стоимость
+                br
+                | за 30 минут
+                img(src="img/semicircle02.png" alt="")
+            include ../../webforms/calculate-cost
+        +e.col2
+            include ../../info-calculate-cost/info-calculate-cost
+

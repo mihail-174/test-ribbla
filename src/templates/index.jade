@@ -1,0 +1,35 @@
+extends layout/html
+
+block variables
+    - const title = "Главная";
+    - const description = '';
+    - const keywords = '';
+    - const pageClass = 'front';
+
+// ПОДКЛЮЧЕНИЕ CSS ФАЙЛОВ
+// через комментарий:
+// //include: cssfile[название_файла] scriptfile[]
+// или
+// +style('css/название_файла.css')
+block styles
+
+// ПОДКЛЮЧЕНИЕ JAVASCRIPT ФАЙЛОВ
+// через комментарий:
+// //include: cssfile[] scriptfile[название_файла]
+// или
+// +script('js/название_файла.js')
+block scripts
+
+// ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ
+block content
+    .container
+        include ../components/header/header
+        include ../components/promo/promo
+        include ../components/blocks/block-calculate-cost/block-calculate-cost
+        include ../components/blocks/block-our-projects/block-our-projects
+        include ../components/blocks/block-why-choose-us/block-why-choose-us
+        include ../components/blocks/block-quality/block-quality
+        include ../components/blocks/block-come-visit/block-come-visit
+        include ../components/blocks/block-count-your-idea/block-count-your-idea
+        include ../components/blocks/block-order-free-payment/block-order-free-payment
+        include ../components/footer/footer

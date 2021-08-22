@@ -1,0 +1,103 @@
+//include: cssfile[webform] scriptfile[]
+//include: cssfile[webform-submission-NAME-form] scriptfile[]
+
+// webform
+form.webform-submission-form.webform-submission-NAME-form
+    .webform-elements.form-wrapper
+        .form-item.form-item-markup.js-form-type-webform-markup
+            p Укажите Ваши контактные данные и в течение 1 рабочего дня мы свяжемся с Вами.
+        #ajax-wrapper
+            .form-item.form-item-upload.js-form-type-webform-document-file
+                // загрузка изображения
+                .form-managed-file
+                    input#edit-file-upload.form-file(name="files[file]", size="22", type="file")
+                .description
+                    | Только один файл.
+                    br
+                    | Ограничение 128 МБ.
+                    br
+                    | Допустимые типы: gif jpg png.
+            .form-item.form-item-upload.js-form-type-webform-document-file
+                // прикрепленное изображение
+                .form-managed-file
+                    span.file.file--image название_картинки.png
+                    .form-action
+                        button.button.form-submit(type="submit", name="upload_remove_button", value="Удалить")
+                            i.fal.fa-times
+                .description
+                    | Только один файл.
+                    br
+                    | Ограничение 128 МБ.
+                    br
+                    | Допустимые типы: gif jpg png.
+        .form-item.form-item-advance.js-form-type-select
+            label(for="form-item-advance") Аванс:
+            select#edit-advance.cs-select.error.form-select(data-drupal-selector='edit-advance' name='advance')
+                option(value='') - Не указано -
+                option(value='Аванс' selected='selected') Аванс
+                option(value='10%') 10%
+                option(value='20%') 20%
+                option(value='30%') 30%
+                option(value='40%') 40%
+                option(value='50%') 50%
+        .form-item.form-item-lizing.js-form-type-select
+            label(for="form-item-lizing") Срок лизинга:
+            select#edit-lizing.cs-select.form-select(data-drupal-selector='edit-lizing' name='lizing')
+                option(value='') - Не указано -
+                option(value='Срок лизинга' selected='selected') Срок лизинга
+                option(value='1 год') 1 год
+                option(value='2 года') 2 года
+                option(value='3 года') 3 года
+                option(value='4 года') 4 года
+                option(value='5 лет') 5 лет
+        .form-item.form-item-name.js-form-type-textfield
+            label(for="form-item-name") Ваше имя:
+            input.form-text#form-item-name(type='text' name='name' value='' size='60' maxlength='255')
+        .form-item.form-item-phone.js-form-type-tel
+            label(for="form-item-phone") Ваш телефон:
+            input.form-text#form-item-phone(type='tel' name='phone' value='' size='60' maxlength='255')
+        .form-item.form-item-email.js-form-type-textfield
+            label(for="form-item-email") Ваша почта:
+            input.form-text#form-item-email(type='email' name='email' value='' size='60' maxlength='255')
+        .form-item.form-item-comment.js-form-type-textarea
+            label(for="form-item-comment") Название организации, вид деятельности:
+            div
+                textarea.form-textarea#form-item-comment(name='comment' rows='3' cols='60')
+        .form-item.js-form-type-checkbox
+            input.form-checkbox(type="checkbox" id="edit-test-galka" name="test_galka" value="1")
+            label(for="edit-test-galka").option Одиночный флажок
+        fieldset.form-item.checkboxes--wrapper.fieldgroup.form-composite.webform-composite-visible-title.js-webform-type-checkboxes.webform-type-checkboxes.form-wrapper
+            legend
+                span.fieldset-legend Группа флажков
+            .fieldset-wrapper
+                .js-webform-checkboxes.webform-options-display-one-column.form-checkboxes
+                    .form-item.js-form-type-checkbox.form-item-test-galkas-1
+                        input.form-checkbox#edit-test-galkas-1(type="checkbox" name="test_galkas[раз]" value="раз")
+                        label.option(for="edit-test-galkas-1") Пункт один
+                    .form-item.js-form-type-checkbox.form-item-test-galkas-2
+                        input.form-checkbox#edit-test-galkas-2(type="checkbox" name="test_galkas[два]" value="два")
+                        label.option(for="edit-test-galkas-2") Пункт один
+                    .form-item.js-form-type-checkbox.form-item-test-galkas-3
+                        input.form-checkbox#edit-test-galkas-3(type="checkbox" name="test_galkas[три]" value="три")
+                        label.option(for="edit-test-galkas-3") Пункт один
+        fieldset.radios--wrapper.fieldgroup.form-composite.webform-composite-visible-title.js-webform-type-radios.webform-type-radios.js-form-item.form-item.js-form-wrapper.form-wrapper
+            legend
+                span.fieldset-legend Группа радиокнопок
+            .fieldset-wrapper
+                .js-webform-radios.webform-options-display-one-column
+                    .form-item.js-form-type-radio
+                        input.form-checkbox#edit-test-radio-1(type="radio" name="test_radio" value="раз")
+                        label.option(for="edit-test-radio-1") Пункт один
+                    .form-item.js-form-type-radio
+                        input.form-checkbox#edit-test-radio-2(type="radio" name="test_radio" value="два")
+                        label.option(for="edit-test-radio-2") Пункт два
+                    .form-item.js-form-type-radio
+                        input.form-checkbox#edit-test-radio-3(type="radio" name="test_radio" value="три")
+                        label.option(for="edit-test-radio-3") Пункт три
+        .form-item.form-item-privacy-policy.js-form-type-webform-markup
+            | Отправляя форму вы подтверждаете согласие с
+            a(target='_blank' href='/privacy-policy')  политикой обработки персональных данных
+            | .
+    .form-actions.form-wrapper
+        input.webform-button--submit.form-submit(type="submit" name="op" value="Отправить")
+// КОНЕЦ: webform

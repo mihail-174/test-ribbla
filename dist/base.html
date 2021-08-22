@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>base</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/vnd.microsoft.icon">
+    <script src="https://yastatic.net/browser-updater/v1/script.js" charset="utf-8"></script>
+    <script>var yaBrowserUpdater = new ya.browserUpdater.init({"lang":"ru","browsers":{"yabrowser":"15.12","chrome":"54","ie":"10","opera":"41","safari":"8","fx":"49","iron":"35","flock":"Infinity","palemoon":"25","camino":"Infinity","maxthon":"4.5","seamonkey":"2.3"},"theme":"yellow"});</script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.4.11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/swiper@6.4.11/swiper-bundle.min.js"></script>
+  </head>
+  <body class="for-development">
+    <!--+b.gulp-panel-->
+    <!--    +e.container-->
+    <!--        include burger-->
+    <!--        +e.content-->
+    <!--            +e.nv-->
+    <!--                include menu-->
+    <!---->
+    <!--// *****************************************************-->
+    <!--// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО-->
+    <!--// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ-->
+    <!--// *****************************************************-->
+    <!--style.-->
+    <!--    .gulp-panel {}-->
+    <!--    .gulp-panel.open .gulp-panel__container {-->
+    <!--        position: relative;-->
+    <!--        width: 100%;-->
+    <!--    }-->
+    <!--    .gulp-panel.open .gulp-panel__content {-->
+    <!--        width: 100%;-->
+    <!--        max-height: 100%;-->
+    <!--        overflow: visible;-->
+    <!--    }-->
+    <!--    .gulp-panel__container {-->
+    <!--        position: fixed;-->
+    <!--        top: 0;-->
+    <!--        left: 0;-->
+    <!--        z-index: 1000;-->
+    <!--        background-color: bisque;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        box-shadow: 0 0 5px 0 #ccc;-->
+    <!--        transition: all 0.25s ease-in-out;-->
+    <!--    }-->
+    <!--    .gulp-panel__content {-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        grid-gap: 30px;-->
+    <!--        overflow: hidden;-->
+    <!--        background-color: bisque;-->
+    <!--        position: fixed;-->
+    <!--        top: 0;-->
+    <!--        left: 24px;-->
+    <!--        width: 0;-->
+    <!--        z-index: 1000;-->
+    <!--    }-->
+    <!--    .gulp-panel__nv {-->
+    <!--        flex: 1;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config {-->
+    <!--        padding-left: 35px;-->
+    <!--        cursor: pointer;-->
+    <!--        height: 100%;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        position: relative;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:before {-->
+    <!--        content: "\f019";-->
+    <!--        font-family: "Font Awesome 5 Pro";-->
+    <!--        font-size: 25px;-->
+    <!--        font-weight: 100;-->
+    <!--        color: #333;-->
+    <!--        line-height: 1;-->
+    <!--        position: absolute;-->
+    <!--        top: 0;-->
+    <!--        bottom: 0;-->
+    <!--        left: 0;-->
+    <!--        display: flex;-->
+    <!--        align-items: center;-->
+    <!--        justify-content: center;-->
+    <!--        transition: all 0.2s ease-in-out;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:hover:before {-->
+    <!--        color: #d60e12;-->
+    <!--    }-->
+    <!--    .gulp-panel__dl-config:hover span {-->
+    <!--        color: #000000;-->
+    <!--    }-->
+    <!--    @media screen and (min-width: 992px) {-->
+    <!--        .gulp-panel.open {-->
+    <!--            height: 24px;-->
+    <!--        }-->
+    <!--    }-->
+    <!--    @media screen and (max-width: 991px) {-->
+    <!--        .gulp-panel__content {-->
+    <!--            left: 0;-->
+    <!--            padding-top: 24px;-->
+    <!--            padding-bottom: 16px;-->
+    <!--        }-->
+    <!--    }-->
+    <!---->
+    <!-- *****************************************************-->
+    <!-- СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО-->
+    <!-- ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ-->
+    <!-- *****************************************************-->
+    <script>
+      function ready(callback) {
+          // in case the document is already rendered
+          if ( document.readyState !== 'loading' ) {
+              callback();
+          }
+          // modern browsers
+          else if ( document.addEventListener ) {
+              document.addEventListener('DOMContentLoaded' , callback);
+          }
+          // IE <= 8
+          else {
+              document.attachEvent('onreadystatechange' , function () {
+                  if ( document.readyState === 'complete' ) callback();
+              });
+          }
+      };
+      ready(() => {
+      
+          // ФУНКЦИЯ ВЫВОДА СПИСКА ФАЙЛОВ CSS И JS
+          window.printListCssFiles = function printListCssFiles(style) {
+              var body = document.body.innerHTML;
+              var pattern = new RegExp("(?<=\<\!\-\-include: ).*?(?=\-\-\>)", 'gi');
+              var comment = Array.from(new Set(body.match(pattern)));
+              console.groupCollapsed("ВЫВОД СПИСКА ФАЙЛОВ CSS И JS");
+              console.log(comment);
+              console.groupEnd();
+              var new_array_name_css_file = [];
+              var new_array_name_js_file = [];
+      
+              // ВЫВОДИМ CSS И JS НА СТРАНИЦУ
+              comment.forEach(function (item) {
+      
+                  var array_name_css_file = item.match(/(?<=cssfile\[).*?(?=\])/gi);
+                  if (array_name_css_file[0]) {
+                      array_name_css_file = array_name_css_file[0].split(", ");
+                      array_name_css_file.map(function (file) {
+                          // console.log( file );
+                          new_array_name_css_file.push(`css/${file}.css`);
+                      });
+                  } else {
+                      array_name_css_file = false;
+                  };
+                  // console.log(array_name_css_file);
+      
+                  var array_name_js_file = item.match(/(?<=scriptfile\[).*?(?=\])/gi);
+                  if ( array_name_js_file[0] ) {
+                      array_name_js_file = array_name_js_file[0].split(", ");
+                      array_name_js_file.map(function (file) {
+                          new_array_name_js_file.push(`js/${file}.js`);
+                      });
+                  } else {
+                      array_name_js_file = false;
+                  };
+                  // console.log(array_name_js_file);
+              });
+      
+              console.groupCollapsed("новый список css файлов");
+              new_array_name_css_file = Array.from(new Set(new_array_name_css_file));
+              console.log(new_array_name_css_file);
+              console.groupEnd();
+      
+              console.groupCollapsed("новый список js файлов");
+              new_array_name_js_file = Array.from(new Set(new_array_name_js_file));
+              console.log(new_array_name_js_file);
+              console.groupEnd();
+      
+              new_array_name_css_file.map(function (file) {
+                  if ( file.match(/--global/gi) ) {
+                      let tagLink = document.createElement("link");
+                      tagLink.rel = "stylesheet";
+                      tagLink.type = "text/css";
+                      tagLink.href = file.replace(" --global", "");
+                      document.body.prepend(tagLink);
+                  } else {
+                      let tagLink = document.createElement("link");
+                      tagLink.rel = "stylesheet";
+                      tagLink.type = "text/css";
+                      tagLink.href = file;
+                      document.body.appendChild(tagLink);
+                  }
+              });
+      
+              new_array_name_js_file.map(function (file) {
+                  if ( file.match(/--global/gi) ) {
+                      let tagScript = document.createElement("script");
+                      tagScript.src = file.replace(" --global", "");
+                      tagScript.async = false;
+                      document.body.prepend(tagScript);
+                  } else {
+                      let tagScript = document.createElement("script");
+                      tagScript.src = file;
+                      tagScript.async = false;
+                      document.body.appendChild(tagScript);
+                  }
+              });
+      
+          }
+      
+          printListCssFiles(1);
+      
+      });
+    </script>
+    <!--include: cssfile[style] scriptfile[]-->
+    <!--include: cssfile[] scriptfile[plugins]-->
+    <!--include: cssfile[] scriptfile[drupal-file-upload-lib --global, drupal-file-upload]-->
+    <!--include: cssfile[] scriptfile[theme]-->
+    <div class="container">
+      <main>
+        <section class="region region-content">
+          <div class="node node-type-page node-view-mode-full">
+            <div class="field field-type-string field-body">
+              <div class="value">
+                <h1>Заголовок первого уровня</h1>
+                <h2>Заголовок второго уровня</h2>
+                <h3>Заголовок третьего уровня</h3>
+                <h4>Заголовок четвертого уровня</h4>
+                <h5>Заголовок пятого уровня</h5>
+                <h6>Заголовок шестого уровня</h6>
+                <p>Lorem ipsum dolor sit amet, <a href="javascript://">ссылка в текста</a> consectetur adipisicing elit. <b>жирный текст в теге b</b> Ab accusantium aliquam <strong>жирный текст в теге strong</strong>beatae consequatur deleniti earum error esse explicabo fugit iusto minus neque officiis, provident quas qui quidem tenetur, vero voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur at autem dolore laboriosam maiores molestiae porro provident quam ratione repellendus repudiandae, sit suscipit velit veritatis vitae voluptate? Magni, nam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam beatae consequatur deleniti earum error esse explicabo fugit iusto minus neque officiis, provident quas qui quidem tenetur, vero voluptas.</p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, totam!</li>
+                  <li>Lorem ipsum dolor.</li>
+                </ul>
+                <ol>
+                  <li>Lorem ipsum dolor sit amet, consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, totam!</li>
+                  <li>Lorem ipsum dolor.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+                  <li>Lorem ipsum dolor sit amet.</li>
+                  <li>Lorem ipsum.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut beatae exercitationem facere laborum quisquam rem voluptatibus.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+                  <li>Lorem ipsum dolor sit amet.</li>
+                  <li>Lorem ipsum.</li>
+                </ol>
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <th>Lorem ipsum</th>
+                      <th>Lorem ipsum</th>
+                      <th>Lorem ipsum</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lorem ipsum</td>
+                      <td>Lorem ipsum</td>
+                      <td>Lorem ipsum</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="block block-html">
+            <div class="block__header">
+              <h2 class="block__title">Кнопки</h2>
+            </div>
+            <div class="block__content">
+              <table border="1">
+                <thead>
+                  <tr>
+                    <td>Большая</td>
+                    <td>Обычная</td>
+                    <td>Маленькая</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary btn-lg">primary</a></div>
+                    </td>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary">primary</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary btn-block">primary block</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary btn_icon-left"><i class="fal fa-angle-left"></i>primary с иконкой</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary btn_icon-right">primary с иконкой<i class="fal fa-angle-right"></i></a></div>
+                    </td>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-primary btn-sm">primary</a></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table border="1">
+                <thead>
+                  <tr>
+                    <td>Большая</td>
+                    <td>Обычная</td>
+                    <td>Маленькая</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary btn-lg">secondary</a></div>
+                    </td>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary">secondary</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary btn-block">secondary block</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary btn_icon-left"><i class="fal fa-angle-left"></i>secondary с иконкой</a></div>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary btn_icon-right">secondary с иконкой<i class="fal fa-angle-right"></i></a></div>
+                    </td>
+                    <td>
+                      <div style="margin-bottom: 16px;"><a href="javascript://" class="btn btn-secondary btn-sm">secondary</a></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="block block-html">
+            <div class="block__header">
+              <h2 class="block__title">Форма</h2>
+            </div>
+            <div class="block__content">
+              <!--include: cssfile[webform] scriptfile[]-->
+              <!--include: cssfile[webform-submission-NAME-form] scriptfile[]-->
+              <!-- webform-->
+              <form class="webform-submission-form webform-submission-NAME-form">
+                <div class="webform-elements form-wrapper">
+                  <div class="form-item form-item-markup js-form-type-webform-markup">
+                    <p>Укажите Ваши контактные данные и в течение 1 рабочего дня мы свяжемся с Вами.</p>
+                  </div>
+                  <div id="ajax-wrapper">
+                    <div class="form-item form-item-upload js-form-type-webform-document-file">
+                      <!-- загрузка изображения-->
+                      <div class="form-managed-file">
+                        <input id="edit-file-upload" name="files[file]" size="22" type="file" class="form-file">
+                      </div>
+                      <div class="description">Только один файл.<br>Ограничение 128 МБ.<br>Допустимые типы: gif jpg png.</div>
+                    </div>
+                    <div class="form-item form-item-upload js-form-type-webform-document-file">
+                      <!-- прикрепленное изображение-->
+                      <div class="form-managed-file"><span class="file file--image">название_картинки.png</span>
+                        <div class="form-action">
+                          <button type="submit" name="upload_remove_button" value="Удалить" class="button form-submit"><i class="fal fa-times"></i></button>
+                        </div>
+                      </div>
+                      <div class="description">Только один файл.<br>Ограничение 128 МБ.<br>Допустимые типы: gif jpg png.</div>
+                    </div>
+                  </div>
+                  <div class="form-item form-item-advance js-form-type-select">
+                    <label for="form-item-advance">Аванс:</label>
+                    <select id="edit-advance" data-drupal-selector="edit-advance" name="advance" class="cs-select error form-select">
+                      <option value="">- Не указано -</option>
+                      <option value="Аванс" selected="selected">Аванс</option>
+                      <option value="10%">10%</option>
+                      <option value="20%">20%</option>
+                      <option value="30%">30%</option>
+                      <option value="40%">40%</option>
+                      <option value="50%">50%</option>
+                    </select>
+                  </div>
+                  <div class="form-item form-item-lizing js-form-type-select">
+                    <label for="form-item-lizing">Срок лизинга:</label>
+                    <select id="edit-lizing" data-drupal-selector="edit-lizing" name="lizing" class="cs-select form-select">
+                      <option value="">- Не указано -</option>
+                      <option value="Срок лизинга" selected="selected">Срок лизинга</option>
+                      <option value="1 год">1 год</option>
+                      <option value="2 года">2 года</option>
+                      <option value="3 года">3 года</option>
+                      <option value="4 года">4 года</option>
+                      <option value="5 лет">5 лет</option>
+                    </select>
+                  </div>
+                  <div class="form-item form-item-name js-form-type-textfield">
+                    <label for="form-item-name">Ваше имя:</label>
+                    <input id="form-item-name" type="text" name="name" value="" size="60" maxlength="255" class="form-text">
+                  </div>
+                  <div class="form-item form-item-phone js-form-type-tel">
+                    <label for="form-item-phone">Ваш телефон:</label>
+                    <input id="form-item-phone" type="tel" name="phone" value="" size="60" maxlength="255" class="form-text">
+                  </div>
+                  <div class="form-item form-item-email js-form-type-textfield">
+                    <label for="form-item-email">Ваша почта:</label>
+                    <input id="form-item-email" type="email" name="email" value="" size="60" maxlength="255" class="form-text">
+                  </div>
+                  <div class="form-item form-item-comment js-form-type-textarea">
+                    <label for="form-item-comment">Название организации, вид деятельности:</label>
+                    <div>
+                      <textarea id="form-item-comment" name="comment" rows="3" cols="60" class="form-textarea"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-item js-form-type-checkbox">
+                    <input type="checkbox" id="edit-test-galka" name="test_galka" value="1" class="form-checkbox">
+                    <label for="edit-test-galka" class="option">Одиночный флажок</label>
+                  </div>
+                  <fieldset class="form-item checkboxes--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-checkboxes webform-type-checkboxes form-wrapper">
+                    <legend><span class="fieldset-legend">Группа флажков</span></legend>
+                    <div class="fieldset-wrapper">
+                      <div class="js-webform-checkboxes webform-options-display-one-column form-checkboxes">
+                        <div class="form-item js-form-type-checkbox form-item-test-galkas-1">
+                          <input id="edit-test-galkas-1" type="checkbox" name="test_galkas[раз]" value="раз" class="form-checkbox">
+                          <label for="edit-test-galkas-1" class="option">Пункт один</label>
+                        </div>
+                        <div class="form-item js-form-type-checkbox form-item-test-galkas-2">
+                          <input id="edit-test-galkas-2" type="checkbox" name="test_galkas[два]" value="два" class="form-checkbox">
+                          <label for="edit-test-galkas-2" class="option">Пункт один</label>
+                        </div>
+                        <div class="form-item js-form-type-checkbox form-item-test-galkas-3">
+                          <input id="edit-test-galkas-3" type="checkbox" name="test_galkas[три]" value="три" class="form-checkbox">
+                          <label for="edit-test-galkas-3" class="option">Пункт один</label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <fieldset class="radios--wrapper fieldgroup form-composite webform-composite-visible-title js-webform-type-radios webform-type-radios js-form-item form-item js-form-wrapper form-wrapper">
+                    <legend><span class="fieldset-legend">Группа радиокнопок</span></legend>
+                    <div class="fieldset-wrapper">
+                      <div class="js-webform-radios webform-options-display-one-column">
+                        <div class="form-item js-form-type-radio">
+                          <input id="edit-test-radio-1" type="radio" name="test_radio" value="раз" class="form-checkbox">
+                          <label for="edit-test-radio-1" class="option">Пункт один</label>
+                        </div>
+                        <div class="form-item js-form-type-radio">
+                          <input id="edit-test-radio-2" type="radio" name="test_radio" value="два" class="form-checkbox">
+                          <label for="edit-test-radio-2" class="option">Пункт два</label>
+                        </div>
+                        <div class="form-item js-form-type-radio">
+                          <input id="edit-test-radio-3" type="radio" name="test_radio" value="три" class="form-checkbox">
+                          <label for="edit-test-radio-3" class="option">Пункт три</label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="form-item form-item-privacy-policy js-form-type-webform-markup">Отправляя форму вы подтверждаете согласие с<a target="_blank" href="/privacy-policy"> политикой обработки персональных данных</a>.</div>
+                </div>
+                <div class="form-actions form-wrapper">
+                  <input type="submit" name="op" value="Отправить" class="webform-button--submit form-submit">
+                </div>
+              </form>
+              <!-- КОНЕЦ: webform-->
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

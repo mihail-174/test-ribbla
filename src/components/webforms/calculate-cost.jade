@@ -1,0 +1,42 @@
+//include: cssfile[webform] scriptfile[]
+
+form.webform-submission-form.webform-submission-calculate-cost-form
+    .webform-elements.form-wrapper
+        .form-item.form-item-name.js-form-type-textfield
+            label(for="form-item-name") Введите ваше имя:
+            input.form-text#form-item-name(type='text' name='name' value='' size='60' maxlength='255')
+        .form-item.form-item-email.js-form-type-textfield
+            label(for="form-item-email") Введите ваш e mail:
+            input.form-text#form-item-email(type='email' name='email' value='' size='60' maxlength='255')
+        .form-item.form-item-phone.js-form-type-tel
+            label(for="form-item-phone") Введите ваш номер телефона:
+            input.form-text#form-item-phone(type='tel' name='phone' value='' size='60' maxlength='255')
+        #ajax-wrapper
+            .form-item.form-item-upload.js-form-type-webform-document-file
+                // загрузка изображения
+                .form-managed-file
+                    input#edit-file-upload.form-file(name="files[file]", size="22", type="file")
+                .description
+                    | Только один файл.
+                    br
+                    | Ограничение 128 МБ.
+                    br
+                    | Допустимые типы: gif jpg png.
+            //.form-item.form-item-upload.js-form-type-webform-document-file
+            //    // прикрепленное изображение
+            //    .form-managed-file
+            //        span.file.file--image название_картинки.png
+            //        .form-action
+            //            button.button.form-submit(type="submit", name="upload_remove_button", value="Удалить")
+            //                i.fal.fa-times
+            //    .description
+            //        | Только один файл.
+            //        br
+            //        | Ограничение 128 МБ.
+            //        br
+            //        | Допустимые типы: gif jpg png.
+        .form-item.js-form-type-checkbox.form-item-privacy-policy
+            input.form-checkbox(type="checkbox" id="edit-privacy-policy" name="test_galka" value="1")
+            label(for="edit-privacy-policy").option Я согласен с условиями обработки и исползования персональных данных
+    .form-actions.form-wrapper
+        input.webform-button--submit.form-submit(type="submit" name="op" value="Получить расчет")

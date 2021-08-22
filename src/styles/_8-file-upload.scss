@@ -1,0 +1,114 @@
+.sfi-wrapper {
+    width: 100% !important;
+    outline: none !important;
+    display: flex;
+}
+.sfi-filename {
+    display: block;
+    margin-right: 15px;
+}
+.sfi-filename.empty {
+    cursor: pointer;
+    display: none;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 100%;
+        // background-color: $color1;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 17px;
+        right: 22px;
+        // @include sprite($attach);
+    }
+}
+.sfi-trigger {
+    text-transform: uppercase;
+    color: #fff;
+    height: 76px;
+    background-color: #ff3b3d;
+    display: flex;
+    align-items: center;
+    padding-left: 68px;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    @include max-screen(1199px) {
+        padding-left: 88px;
+    }
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+    &:before {
+        content: "";
+        @include sprite($upload);
+        position: absolute;
+        top: 23px;
+        left: 25px;
+        z-index: 1;
+    }
+    &:after {
+        content: "";
+        width: 68px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #0e0a19;
+        z-index: 0;
+    }
+}
+.form-managed-file {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .file {
+        margin-left: rem(8px);
+        order: 2;
+        a {
+            pointer-events: none;
+            border: none;
+        }
+    }
+    [name="upload_remove_button"] {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        order: 1;
+        color: var(--color-1-norma);
+    }
+    .description {
+        display: none;
+    }
+    .file--image {
+        display: flex;
+        align-items: center;
+        a {
+            color: #000000;
+            border: none;
+            position: relative;
+            white-space: nowrap;
+            max-width: calc(100% - 20px);
+            overflow: hidden;
+        }
+    }
+    button[value="Удалить"] {
+        display: block;
+        padding-top: 3px;
+        &:hover {
+            color: #2657a2;
+            border: none !important;
+        }
+    }
+}
+
+input[name="upload_upload_button"],
+input[type="file"] {
+    display: none !important;
+}

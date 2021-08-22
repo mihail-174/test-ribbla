@@ -1,0 +1,50 @@
+@import "../../styles/helpers/_helpers";
+
+.info-calculate-cost {
+    background-color: #ff3b3d;
+    padding: 60px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    position: relative;
+    .bg-img {
+        position: absolute;
+        top: -73px;
+        left: -93px;
+        max-width: none;
+        @include max-screen(1199px) {
+            top: -53px;
+            left: -73px;
+            width: 530px;
+        }
+        @include max-screen(767px) {
+            display: none;
+        }
+    }
+}
+.info-calculate-cost__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 19px;
+    color: #ffffff;
+    width: 107px;
+    margin-bottom: 24px;
+    img {
+        margin-left: 8px;
+    }
+}
+.info-calculate-cost__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    color: #ffffff;
+    width: 213px;
+    P {
+        @include first(1) {
+            margin-top: 0;
+        }
+        @include last(1) {
+            margin-bottom: 0;
+        }
+    }
+}

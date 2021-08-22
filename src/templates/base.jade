@@ -1,0 +1,132 @@
+extends layout/html
+
+block variables
+    - const title = "base";
+    - const description = '';
+    - const keywords = '';
+    - const pageClass = 'for-development';
+
+// ПОДКЛЮЧЕНИЕ CSS ФАЙЛОВ
+// через комментарий:
+// //include: cssfile[название_файла] scriptfile[]
+// или
+// +style('css/название_файла.css')
+block styles
+
+// ПОДКЛЮЧЕНИЕ JAVASCRIPT ФАЙЛОВ
+// через комментарий:
+// //include: cssfile[] scriptfile[название_файла]
+// или
+// +script('js/название_файла.js')
+block scripts
+
+// ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ
+block content
+
+    .container
+        main
+            section.region.region-content
+                .node.node-type-page.node-view-mode-full
+                    .field.field-type-string.field-body
+                        .value
+                            h1 Заголовок первого уровня
+                            h2 Заголовок второго уровня
+                            h3 Заголовок третьего уровня
+                            h4 Заголовок четвертого уровня
+                            h5 Заголовок пятого уровня
+                            h6 Заголовок шестого уровня
+                            p Lorem ipsum dolor sit amet, <a href="javascript://">ссылка в текста</a> consectetur adipisicing elit. <b>жирный текст в теге b</b> Ab accusantium aliquam <strong>жирный текст в теге strong</strong>beatae consequatur deleniti earum error esse explicabo fugit iusto minus neque officiis, provident quas qui quidem tenetur, vero voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur at autem dolore laboriosam maiores molestiae porro provident quam ratione repellendus repudiandae, sit suscipit velit veritatis vitae voluptate? Magni, nam.
+                            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam beatae consequatur deleniti earum error esse explicabo fugit iusto minus neque officiis, provident quas qui quidem tenetur, vero voluptas.
+                            ul
+                                li Lorem ipsum dolor sit amet, consectetur.
+                                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, totam!
+                                li Lorem ipsum dolor.
+                            ol
+                                li Lorem ipsum dolor sit amet, consectetur.
+                                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, totam!
+                                li Lorem ipsum dolor.
+                                li Lorem ipsum dolor sit amet, consectetur adipisicing.
+                                li Lorem ipsum dolor sit amet.
+                                li Lorem ipsum.
+                                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut beatae exercitationem facere laborum quisquam rem voluptatibus.
+                                li Lorem ipsum dolor sit amet, consectetur adipisicing.
+                                li Lorem ipsum dolor sit amet.
+                                li Lorem ipsum.
+                            table(border="1")
+                                thead
+                                    tr
+                                        th Lorem ipsum
+                                        th Lorem ipsum
+                                        th Lorem ipsum
+                                tbody
+                                    tr
+                                        td Lorem ipsum
+                                        td Lorem ipsum
+                                        td Lorem ipsum
+
+                .block.block-html
+                    .block__header
+                        h2.block__title Кнопки
+                    .block__content
+                        table(border="1")
+                            thead
+                                tr
+                                    td Большая
+                                    td Обычная
+                                    td Маленькая
+                            tbody
+                                tr
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary.btn-lg(href="javascript://") primary
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary(href="javascript://") primary
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary.btn-block(href="javascript://") primary block
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary.btn_icon-left(href="javascript://")
+                                                i.fal.fa-angle-left
+                                                | primary с иконкой
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary.btn_icon-right(href="javascript://")
+                                                | primary с иконкой
+                                                i.fal.fa-angle-right
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-primary.btn-sm(href="javascript://") primary
+
+
+                        table(border="1")
+                            thead
+                                tr
+                                    td Большая
+                                    td Обычная
+                                    td Маленькая
+                            tbody
+                                tr
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary.btn-lg(href="javascript://") secondary
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary(href="javascript://") secondary
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary.btn-block(href="javascript://") secondary block
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary.btn_icon-left(href="javascript://")
+                                                i.fal.fa-angle-left
+                                                | secondary с иконкой
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary.btn_icon-right(href="javascript://")
+                                                | secondary с иконкой
+                                                i.fal.fa-angle-right
+                                    td
+                                        div(style="margin-bottom: 16px;")
+                                            a.btn.btn-secondary.btn-sm(href="javascript://") secondary
+
+                .block.block-html
+                    .block__header
+                        h2.block__title Форма
+                    .block__content
+                        include ../components/webforms/default

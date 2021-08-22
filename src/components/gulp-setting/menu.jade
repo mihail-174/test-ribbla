@@ -1,0 +1,138 @@
++b.gulp-menu
+    +e.UL.list
+        +e.LI.item_expanded
+            +e.A.link(href="javascript://")
+                span стартинг
+            +b.gulp-menu-sub
+                +e.UL.list
+                    +e.LI.item
+                        +e.A.link(href="base.html") base
+        +e.LI.item
+            +e.A.link(href="index.html") главная
+
+// *****************************************************
+// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО
+// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ
+// *****************************************************
+style.
+    .gulp-menu__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .gulp-menu__item {
+        margin: 0;
+        list-style: none;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+    }
+    .gulp-menu__item:before {
+        display: none;
+    }
+    .gulp-menu__item:hover {
+        background-color: #fff1e0;
+    }
+    .gulp-menu__item:hover .gulp-menu__link {
+        text-decoration: none;
+        color: #d60e12;
+    }
+    .gulp-menu__item:hover .gulp-menu-sub {
+        opacity: 1;
+        visibility: visible;
+    }
+    .gulp-menu__item_expanded .gulp-menu__link span {
+        position: relative;
+        padding-right: 13px;
+    }
+    .gulp-menu__item_expanded .gulp-menu__link span::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-width: 4px 4px 0 4px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+        bottom: 0;
+        margin: auto;
+        height: 0;
+    }
+    .gulp-menu__link {
+        padding: 0 8px;
+        color: #333;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        border: none;
+        text-decoration: none;
+        font-size: 12px;
+    }
+    .gulp-menu-sub {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: all 0.2s ease-in-out;
+        background-color: #fff1e0;
+        width: 230px;
+        padding: 0 0 5px;
+    }
+    .gulp-menu-sub__list {
+        margin: 0;
+        padding: 0;
+    }
+    .gulp-menu-sub__item {
+        margin: 0;
+        list-style: none;
+    }
+    .gulp-menu-sub__item:before {
+        display: none;
+    }
+    .gulp-menu-sub__item:hover .gulp-menu-sub__link {
+        color: #d60e12 !important;
+    }
+    .gulp-menu-sub__link {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #333;
+        border: none;
+        text-decoration: none;
+    }
+    @media screen and (max-width: 991px) {
+        .gulp-menu__list {
+            display: grid;
+        }
+        .gulp-menu__item {
+            width: 100%;
+        }
+        .gulp-menu__item:hover {
+            background-color: transparent;
+        }
+        .gulp-menu__link {
+            justify-content: center;
+            font-size: 14px;
+            padding: 4px;
+            height: auto;
+        }
+
+        .gulp-menu-sub {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            top: auto;
+            left: 0;
+            width: 100%;
+            padding: 0;
+            background-color: bisque;
+        }
+        .gulp-menu-sub__link {
+            text-align: center;
+            padding: 4px;
+        }
+        .gulp-menu__item_expanded {
+            > a {
+                display: none;
+            }
+        }
+    }

@@ -1,0 +1,41 @@
+input[type="checkbox"] {
+    //vertical-align: top;
+    //margin: 0 0 0 0;
+    //width: 0;
+    //height: 0;
+    + label {
+        cursor: pointer;
+        margin: 0;
+    }
+    &:not(checked) {
+        position: absolute;
+        opacity: 0;
+        + label {
+            position: relative;
+            padding: em(0 0 0 25px, 14px);
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0.3em;
+                left: 0;
+                width: rem(10px);
+                height: rem(10px);
+                border: none;
+                box-sizing: border-box;
+                background-color: #ff3b3d;
+            }
+        }
+    }
+    &:checked {
+        + label {
+            &:after {
+                content: "";
+                @include sprite($ok);
+                color: #3171d1;
+                position: absolute;
+                top: em(7px, 14px);
+                left: em(2px, 14px);
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+//include: cssfile[menu] scriptfile[]
+//include: cssfile[menu-NAME] scriptfile[]
+
+// menu
+ul.menu.menu-NAME.menu-level-0
+    li.menu__item
+        a.menu__link(href="#") Элемент 1
+    li.menu__item.is-active
+        a.is-active(href="#") Элемент 2
+    li.menu__item.menu__item_expanded
+         a.menu__link(href="#") Элемент 3 expanded
+        ul.menu.menu-level-1
+            li.menu__item
+                 a.menu__link(href="#") Элемент 1
+            li.menu__item
+                 a.menu__link(href="#") Элемент 2
+            li.menu__item
+                 a.menu__link(href="#") Элемент 3
+    li.menu__item.menu__item_collapsed
+         a.menu__link(href="#") Элемент 4 collapsed
+    li.menu__item
+         a.menu__link(href="#") Элемент 5
+// КОНЕЦ: menu

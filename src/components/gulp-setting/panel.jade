@@ -1,0 +1,197 @@
+//+b.gulp-panel
+//    +e.container
+//        include burger
+//        +e.content
+//            +e.nv
+//                include menu
+//
+//// *****************************************************
+//// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО
+//// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ
+//// *****************************************************
+//style.
+//    .gulp-panel {}
+//    .gulp-panel.open .gulp-panel__container {
+//        position: relative;
+//        width: 100%;
+//    }
+//    .gulp-panel.open .gulp-panel__content {
+//        width: 100%;
+//        max-height: 100%;
+//        overflow: visible;
+//    }
+//    .gulp-panel__container {
+//        position: fixed;
+//        top: 0;
+//        left: 0;
+//        z-index: 1000;
+//        background-color: bisque;
+//        display: flex;
+//        align-items: center;
+//        box-shadow: 0 0 5px 0 #ccc;
+//        transition: all 0.25s ease-in-out;
+//    }
+//    .gulp-panel__content {
+//        display: flex;
+//        align-items: center;
+//        grid-gap: 30px;
+//        overflow: hidden;
+//        background-color: bisque;
+//        position: fixed;
+//        top: 0;
+//        left: 24px;
+//        width: 0;
+//        z-index: 1000;
+//    }
+//    .gulp-panel__nv {
+//        flex: 1;
+//    }
+//    .gulp-panel__dl-config {
+//        padding-left: 35px;
+//        cursor: pointer;
+//        height: 100%;
+//        display: flex;
+//        align-items: center;
+//        position: relative;
+//    }
+//    .gulp-panel__dl-config:before {
+//        content: "\f019";
+//        font-family: "Font Awesome 5 Pro";
+//        font-size: 25px;
+//        font-weight: 100;
+//        color: #333;
+//        line-height: 1;
+//        position: absolute;
+//        top: 0;
+//        bottom: 0;
+//        left: 0;
+//        display: flex;
+//        align-items: center;
+//        justify-content: center;
+//        transition: all 0.2s ease-in-out;
+//    }
+//    .gulp-panel__dl-config:hover:before {
+//        color: #d60e12;
+//    }
+//    .gulp-panel__dl-config:hover span {
+//        color: #000000;
+//    }
+//    @media screen and (min-width: 992px) {
+//        .gulp-panel.open {
+//            height: 24px;
+//        }
+//    }
+//    @media screen and (max-width: 991px) {
+//        .gulp-panel__content {
+//            left: 0;
+//            padding-top: 24px;
+//            padding-bottom: 16px;
+//        }
+//    }
+//
+// *****************************************************
+// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО
+// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ
+// *****************************************************
+script.
+    function ready(callback) {
+        // in case the document is already rendered
+        if ( document.readyState !== 'loading' ) {
+            callback();
+        }
+        // modern browsers
+        else if ( document.addEventListener ) {
+            document.addEventListener('DOMContentLoaded' , callback);
+        }
+        // IE <= 8
+        else {
+            document.attachEvent('onreadystatechange' , function () {
+                if ( document.readyState === 'complete' ) callback();
+            });
+        }
+    };
+    ready(() => {
+
+        // ФУНКЦИЯ ВЫВОДА СПИСКА ФАЙЛОВ CSS И JS
+        window.printListCssFiles = function printListCssFiles(style) {
+            var body = document.body.innerHTML;
+            var pattern = new RegExp("(?<=\<\!\-\-include: ).*?(?=\-\-\>)", 'gi');
+            var comment = Array.from(new Set(body.match(pattern)));
+            console.groupCollapsed("ВЫВОД СПИСКА ФАЙЛОВ CSS И JS");
+            console.log(comment);
+            console.groupEnd();
+            var new_array_name_css_file = [];
+            var new_array_name_js_file = [];
+
+            // ВЫВОДИМ CSS И JS НА СТРАНИЦУ
+            comment.forEach(function (item) {
+
+                var array_name_css_file = item.match(/(?<=cssfile\[).*?(?=\])/gi);
+                if (array_name_css_file[0]) {
+                    array_name_css_file = array_name_css_file[0].split(", ");
+                    array_name_css_file.map(function (file) {
+                        // console.log( file );
+                        new_array_name_css_file.push(`css/${file}.css`);
+                    });
+                } else {
+                    array_name_css_file = false;
+                };
+                // console.log(array_name_css_file);
+
+                var array_name_js_file = item.match(/(?<=scriptfile\[).*?(?=\])/gi);
+                if ( array_name_js_file[0] ) {
+                    array_name_js_file = array_name_js_file[0].split(", ");
+                    array_name_js_file.map(function (file) {
+                        new_array_name_js_file.push(`js/${file}.js`);
+                    });
+                } else {
+                    array_name_js_file = false;
+                };
+                // console.log(array_name_js_file);
+            });
+
+            console.groupCollapsed("новый список css файлов");
+            new_array_name_css_file = Array.from(new Set(new_array_name_css_file));
+            console.log(new_array_name_css_file);
+            console.groupEnd();
+
+            console.groupCollapsed("новый список js файлов");
+            new_array_name_js_file = Array.from(new Set(new_array_name_js_file));
+            console.log(new_array_name_js_file);
+            console.groupEnd();
+
+            new_array_name_css_file.map(function (file) {
+                if ( file.match(/--global/gi) ) {
+                    let tagLink = document.createElement("link");
+                    tagLink.rel = "stylesheet";
+                    tagLink.type = "text/css";
+                    tagLink.href = file.replace(" --global", "");
+                    document.body.prepend(tagLink);
+                } else {
+                    let tagLink = document.createElement("link");
+                    tagLink.rel = "stylesheet";
+                    tagLink.type = "text/css";
+                    tagLink.href = file;
+                    document.body.appendChild(tagLink);
+                }
+            });
+
+            new_array_name_js_file.map(function (file) {
+                if ( file.match(/--global/gi) ) {
+                    let tagScript = document.createElement("script");
+                    tagScript.src = file.replace(" --global", "");
+                    tagScript.async = false;
+                    document.body.prepend(tagScript);
+                } else {
+                    let tagScript = document.createElement("script");
+                    tagScript.src = file;
+                    tagScript.async = false;
+                    document.body.appendChild(tagScript);
+                }
+            });
+
+        }
+
+        printListCssFiles(1);
+
+    });

@@ -1,0 +1,98 @@
++b.gulp-burger
+    +e.menu.LABEL(for='gulp-burger-checkbox')
+        span
+    +e.checkbox.INPUT(type='checkbox')#gulp-burger-checkbox
+
+// *****************************************************
+// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО
+// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ
+// *****************************************************
+style.
+    .gulp-burger {}
+    .gulp-burger.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fdcf99;
+        z-index: 1001;
+    }
+    .gulp-burger.active .gulp-burger__menu span {
+        background-color: transparent;
+    }
+    .gulp-burger.active .gulp-burger__menu span:before {
+        transform: translateY(1px) rotate(45deg);
+    }
+    .gulp-burger.active .gulp-burger__menu span:after {
+        transform: translateY(-1px) rotate(-45deg);
+    }
+    .gulp-burger__checkbox {
+        display: none !important;
+    }
+    .gulp-burger__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 24px;
+        width: 24px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        padding: 0;
+    }
+    .gulp-burger__menu span {
+        width: 18px;
+        height: 2px;
+        background-color: #000;
+        transition: all 0.2s ease-in-out;
+    }
+    .gulp-burger__menu span:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        transform: translateY(-5px);
+        transition: all 0.2s ease-in-out;
+    }
+    .gulp-burger__menu span:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        transform: translateY(3px);
+        transition: all 0.2s ease-in-out;
+    }
+    .gulp-burger__menu:hover {
+        background-color: #fff1e0;
+    }
+
+// *****************************************************
+// СЛЕДУЮЩИЙ КОД НА САЙТ НЕ НУЖНО
+// ЭТО ДЛЯ ТОЛЬКО НА ВРЕМЯ НАПИСАНИЯ ВЕРСТКИ
+// *****************************************************
+script.
+    document.addEventListener('DOMContentLoaded', function () { // Аналог $(document).ready(function(){
+        if ( localStorage.getItem("gulp-setting-burger") == "true" ) {
+            document.querySelector(".gulp-burger__checkbox").checked = true;
+        } else {
+            document.querySelector(".gulp-burger__checkbox").checked = false;
+
+        }
+        if ( document.querySelector(".gulp-burger__checkbox").checked ) {
+            document.querySelector(".gulp-panel").classList.add('open');
+            document.querySelector(".gulp-burger").classList.add('active');
+        } else {
+            document.querySelector(".gulp-panel").classList.remove('open');
+            document.querySelector(".gulp-burger").classList.remove('active');
+        }
+        document.querySelector(".gulp-burger__checkbox").addEventListener('click', function () {
+            localStorage.setItem("gulp-setting-burger", document.querySelector(".gulp-burger__checkbox").checked );
+            if (document.querySelector(".gulp-burger__checkbox").checked) {
+                document.querySelector(".gulp-panel").classList.add('open');
+                document.querySelector(".gulp-burger").classList.add('active');
+            } else {
+                document.querySelector(".gulp-panel").classList.remove('open');
+                document.querySelector(".gulp-burger").classList.remove('active');
+            }
+        });
+    });
